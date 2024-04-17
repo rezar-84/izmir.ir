@@ -1,4 +1,4 @@
-ziston_sub.skin.default:
+izmir.skin.default:
    version: VERSION
    header: true
    css:
@@ -6,7 +6,7 @@ ziston_sub.skin.default:
          css/style.css: {}
    js:
       js/main.js: {}
-styles-rtl:
+style-rtl:
    css:
       theme:
          assets/css/style-rtl.css:  

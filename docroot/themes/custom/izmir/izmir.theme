@@ -2,5 +2,5 @@
 
 function izmir_preprocess_html(&$variables)
 {
-  $variables['#attached']['library'][] = 'ziston_sub/ziston_sub.skin.default';
+  $variables['#attached']['library'][] = 'izmir/ziston_sub.skin.default';
 }
