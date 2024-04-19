@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03de96fb04111e59f9b0718769236dfd",
+    "content-hash": "710a950b4cb2007cfc448ac216f22cf3",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -6495,6 +6495,58 @@
             }
         },
         {
+            "name": "drupal/field_group_bootstrap",
+            "version": "3.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/field_group_bootstrap.git",
+                "reference": "3.0.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_group_bootstrap-3.0.12.zip",
+                "reference": "3.0.12",
+                "shasum": "58f80137a71a01b8d5a43faa5515baf18e9388d8"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11",
+                "drupal/field_group": "~3.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.12",
+                    "datestamp": "1710496565",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "NGUYEN Bao",
+                    "homepage": "https://www.drupal.org/u/lazzyvn",
+                    "email": "n.bao@yahoo.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "lazzyvn",
+                    "homepage": "https://www.drupal.org/user/2896581"
+                }
+            ],
+            "description": "This module provides both a field formatter and a widget for the Paragraphs entity type",
+            "homepage": "https://www.drupal.org/project/field_group_bootstrap",
+            "support": {
+                "source": "https://git.drupalcode.org/project/field_group_bootstrap",
+                "issues": "https://www.drupal.org/project/issues/field_group_bootstrap"
+            }
+        },
+        {
             "name": "drupal/file_mdm",
             "version": "3.0.0",
             "source": {
@@ -9689,6 +9741,58 @@
             }
         },
         {
+            "name": "drupal/mobile_number",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mobile_number.git",
+                "reference": "2.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mobile_number-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "c8bb0aeff4b78f00de17ae73886d286cb6bbc640"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10",
+                "giggsey/libphonenumber-for-php": "^8.0"
+            },
+            "require-dev": {
+                "drupal/dynamic_entity_reference": "^3 || ^4",
+                "drupal/sms": "*",
+                "drupal/smsframework": "^2.2@RC"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.2",
+                    "datestamp": "1705431926",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nir Yariv",
+                    "homepage": "http://dofinity.com",
+                    "email": "nir@dofinity.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Mobile number field with sms verification.",
+            "homepage": "http://drupal.org/project/mobile_number",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mobile_number"
+            }
+        },
+        {
             "name": "drupal/moderation_sidebar",
             "version": "1.7.0",
             "source": {
@@ -12674,6 +12778,61 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/smart_trim",
                 "issues": "https://drupal.org/project/issues/smart_trim"
+            }
+        },
+        {
+            "name": "drupal/smsframework",
+            "version": "2.2.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/smsframework.git",
+                "reference": "2.2.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/smsframework-2.2.0-rc1.zip",
+                "reference": "2.2.0-rc1",
+                "shasum": "03413971785831afecee2a0a41c2326c8d7016ea"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10"
+            },
+            "require-dev": {
+                "drupal/dynamic_entity_reference": "*",
+                "drupal/sms": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.0-rc1",
+                    "datestamp": "1670241566",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "almaudoh",
+                    "homepage": "https://www.drupal.org/user/488082"
+                },
+                {
+                    "name": "batje",
+                    "homepage": "https://www.drupal.org/user/2696"
+                },
+                {
+                    "name": "dpi",
+                    "homepage": "https://www.drupal.org/user/81431"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/smsframework",
+            "support": {
+                "source": "https://git.drupalcode.org/project/smsframework"
             }
         },
         {
@@ -17108,6 +17267,132 @@
                 "source": "https://github.com/FileEye/pel/tree/0.9.20"
             },
             "time": "2023-06-20T07:10:35+00:00"
+        },
+        {
+            "name": "giggsey/libphonenumber-for-php",
+            "version": "8.13.34",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/giggsey/libphonenumber-for-php.git",
+                "reference": "319810672f3f90d810e3cbc0071d0b7b329c2ec8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/319810672f3f90d810e3cbc0071d0b7b329c2ec8",
+                "reference": "319810672f3f90d810e3cbc0071d0b7b329c2ec8",
+                "shasum": ""
+            },
+            "require": {
+                "giggsey/locale": "^1.7|^2.0",
+                "php": ">=5.3.2",
+                "symfony/polyfill-mbstring": "^1.17"
+            },
+            "require-dev": {
+                "pear/pear-core-minimal": "^1.9",
+                "pear/pear_exception": "^1.0",
+                "pear/versioncontrol_git": "^0.5",
+                "phing/phing": "^2.7",
+                "php-coveralls/php-coveralls": "^1.0|^2.0",
+                "symfony/console": "^2.8|^3.0|^v4.4|^v5.2",
+                "symfony/phpunit-bridge": "^4.2 || ^5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "libphonenumber\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "/src/data/",
+                    "/src/carrier/data/",
+                    "/src/geocoding/data/",
+                    "/src/timezone/data/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Joshua Gigg",
+                    "email": "giggsey@gmail.com",
+                    "homepage": "https://giggsey.com/"
+                }
+            ],
+            "description": "PHP Port of Google's libphonenumber",
+            "homepage": "https://github.com/giggsey/libphonenumber-for-php",
+            "keywords": [
+                "geocoding",
+                "geolocation",
+                "libphonenumber",
+                "mobile",
+                "phonenumber",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
+                "source": "https://github.com/giggsey/libphonenumber-for-php"
+            },
+            "time": "2024-04-05T09:45:18+00:00"
+        },
+        {
+            "name": "giggsey/locale",
+            "version": "2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/giggsey/Locale.git",
+                "reference": "e6d4540109a01dd2bc7334cdc842d6a6a67cf239"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/giggsey/Locale/zipball/e6d4540109a01dd2bc7334cdc842d6a6a67cf239",
+                "reference": "e6d4540109a01dd2bc7334cdc842d6a6a67cf239",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "pear/pear-core-minimal": "^1.9",
+                "pear/pear_exception": "^1.0",
+                "pear/versioncontrol_git": "^0.5",
+                "phing/phing": "^2.7",
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^8.5|^9.5",
+                "symfony/console": "^5.0|^6.0",
+                "symfony/filesystem": "^5.0|^6.0",
+                "symfony/finder": "^5.0|^6.0",
+                "symfony/process": "^5.0|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Giggsey\\Locale\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joshua Gigg",
+                    "email": "giggsey@gmail.com",
+                    "homepage": "https://giggsey.com/"
+                }
+            ],
+            "description": "Locale functions required by libphonenumber-for-php",
+            "support": {
+                "issues": "https://github.com/giggsey/Locale/issues",
+                "source": "https://github.com/giggsey/Locale/tree/2.5"
+            },
+            "time": "2023-11-01T17:19:48+00:00"
         },
         {
             "name": "google/recaptcha",
@@ -29364,7 +29649,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/config_update": 15
+        "drupal/config_update": 15,
+        "drupal/smsframework": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,
