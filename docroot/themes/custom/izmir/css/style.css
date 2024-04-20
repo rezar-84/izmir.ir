@@ -138,3 +138,120 @@ span.language-link.active-language{
 
 
 }
+.owl-stage-outer{
+direction: ltr !important;
+}
+
+.filter-map-popular{
+    bottom: 40% !important;
+
+}
+
+#views-exposed-form-duplicate-of-listing-content-listing-filter-form {
+    max-width: 1030px;
+    margin: 0 auto;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+  
+  @media (max-width: 680px) {
+    #views-exposed-form-duplicate-of-listing-content-listing-filter-form {
+      border-radius: 0;
+    }
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item {
+    width: 26%;
+    float: left;
+    margin-bottom: 0;
+    position: relative;
+    background: #fff;
+    padding: 8px 10px;
+  }
+  
+  @media (max-width: 680px) {
+    #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item {
+      width: 100%;
+      border-bottom: 1px solid #dee2e6;
+      border-radius: 0 !important;
+    }
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item:first-child, #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item.form-item-title {
+    border-radius: 4px 0 0 4px;
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item:nth-child(4) {
+    border-radius: 0 4px 4px 0;
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  @media (max-width: 680px) {
+    #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item:after {
+      display: none;
+    }
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item input[type='text'], #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item input[type='search'], #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item input[type='password'], #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item input[type='email'], #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item textarea, #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item select {
+    border: none;
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .chosen-container-single {
+    border: none !important;
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-actions {
+    width: 20%;
+    float: left;
+    margin-left: 2%;
+    border: none;
+  }
+  
+  @media (max-width: 680px) {
+    #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-actions {
+      width: 100%;
+      margin-top: 15px;
+      margin-left: 0;
+    }
+  }
+  
+  #views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-actions input {
+    width: 100%;
+    line-height: 62px;
+  }
+#views-exposed-form-duplicate-of-listing-content-listing-filter-form .form-item{
+    float:right !important ;
+}
+.views-exposed-form .form-item select{
+    background-position: left 15px center !important;
+}
+
+.header-default .main-menu-inner{
+    float: right;
+}
+.navigation .gva_menu .sub-menu{
+    right: 0 !important;
+}
+.gva-user-region .user-content{
+    left: 0 !important;
+}
+.navigation .gva_menu li a{
+    text-align: right  !important;
+}

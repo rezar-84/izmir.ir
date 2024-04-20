@@ -53,7 +53,8 @@
     "drupal/whatsapp": "^1.0",
     "drupal/mobile_number": "^2.0",
     "drupal/smsframework": "^2.2@RC",
-    "drupal/field_group_bootstrap": "^3.0"
+    "drupal/field_group_bootstrap": "^3.0",
+    "drupal/smart_date": "^4.1@RC"
   },
   "require-dev": {
     "drupal/core-dev": "~10",
