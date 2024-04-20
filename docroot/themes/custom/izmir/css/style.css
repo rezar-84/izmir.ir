@@ -18,6 +18,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
     font-family: 'Vazirmatn', sans-serif !important;
 
 }
+.button:not(.register-button), .btn, .btn-white, .btn-theme, .btn-theme-second, .btn-black, .more-link a, .btn-theme-submit{
+  font-family: 'Vazirmatn', sans-serif !important;
+
+
+}
 
 .topbar-info__list {
     list-style: none;
@@ -254,4 +259,15 @@ direction: ltr !important;
 }
 .navigation .gva_menu li a{
     text-align: right  !important;
+}
+
+
+.\.flight-card.gbb-row img {
+  border-radius: 10px;
+}
+.\.flight-card.gbb-row {
+  background: #eee;
+  border-radius: 20px;
+  margin: 26px 0;
+  padding: 20px 0;
 }

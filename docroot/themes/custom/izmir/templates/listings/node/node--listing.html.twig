@@ -47,8 +47,14 @@
 								<ul>
 									<li><a href="#listing-home">{{'Home'|t}}</a></li>
 									<li><a href="#listing-description">{{'Description'|t}}</a></li>
+									{% if content.field_listing_amenities|render %}
+
 									<li><a href="#listing-amenties">{{'Listing Amenties'|t}}</a></li>
+									{% endif %}  
+									{% if content.listing_video|render %}
+
 									<li><a href="#listing-video">{{'Video'|t}}</a></li>
+									{% endif%}
 									<li><a href="#listing-comment">{{'Comment'|t}}</a></li>
 								</ul>
 							</div>
@@ -64,7 +70,7 @@
 		<div class="row">
 			<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				<div class="listing-content-main">
-					<div>{{field_listing_image}} </div>
+					<div>{{content.field_listing_image}} </div>
 					{% if content.body|render %}
 						<div class="listing-info-block listing-description" id="listing-description">
 							<div class="block-content">
@@ -184,7 +190,9 @@
 								{% if node.field_listing_twitter.value %}
 									<li><a href="{{ node.field_listing_twitter.value }}"><i class="icon la la-twitter"></i></a></li>
 								{% endif %}
-
+								{% if node.field_listing_instagram.value %}
+								<li><a href="{{ node.field_listing_instagram.value }}"><i class="icon la la-instagram"></i></a></li>
+							{% endif %}
 							</ul>
 						</div>  
 					</div>
