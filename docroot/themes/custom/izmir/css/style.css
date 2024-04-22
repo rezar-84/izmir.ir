@@ -146,6 +146,7 @@ span.language-link.active-language{
 }
 .owl-stage-outer{
 direction: ltr !important;
+text-align: right;
 }
 
 .filter-map-popular{
