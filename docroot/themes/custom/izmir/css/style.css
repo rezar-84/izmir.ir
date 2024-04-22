@@ -20,9 +20,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
 }
 .button:not(.register-button), .btn, .btn-white, .btn-theme, .btn-theme-second, .btn-black, .more-link a, .btn-theme-submit{
   font-family: 'Vazirmatn', sans-serif !important;
-
+  letter-spacing: normal;
 
 }
+
 
 .topbar-info__list {
     list-style: none;
@@ -290,4 +291,7 @@ direction: ltr !important;
  .app-button i{
   font-size: 60px;
   margin-right: 10px;
+ }
+ .breadcrumb-content-inner .gva-block-breadcrumb .page-title{
+  text-align:right;
  }
