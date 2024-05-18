@@ -43,7 +43,8 @@
 					<div class="address"><i class="icon fas fa-map-marker-alt"></i>{{ conAddress|striptags }}</div>
 				{% endif %}
 				{% if node.field_listing_phone.value %}
-					<div class="phone"><a href="https://wa.me/{{ node.field_listing_phone.value }}?text=تماس از izmir.ir"><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</a></div>
+				<div class="phone"><a href="tel://{{ node.field_listing_phone.value }}"  ><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</a></div>
+	
 				{% endif %}
 			</div>	
 		</div>
@@ -51,7 +52,16 @@
 			<div class="content-inner">
 				<div class="left listing-category">{{ content.field_listing_category }}</div>
 				<div class="right listing-location"><i class="icon fas fa-map-marker-alt"></i>{{ content.field_listing_location }}</div>
+				
+			
+
 			</div>
+				{% if node.field_listing_phone.value %}
+			<div class="whatsapp"><a href="https://wa.me/{{ node.field_listing_phone.value }}?text={{ 'Hi 👋 Im contacting you by clicking your add on Izmir.ir'|t }} "  >
+				<button type="button" class="btn btn-outline-secondary btn-whatsapp">{{ 'Contact Via Whatsapp'|t }} </button>
+				</a>
+			</div>
+				{% endif %}
 		</div>
 	</div>  
 	<div class="listing-data hidden">
