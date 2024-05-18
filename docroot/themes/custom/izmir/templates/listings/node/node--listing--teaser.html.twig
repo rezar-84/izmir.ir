@@ -43,7 +43,7 @@
 					<div class="address"><i class="icon fas fa-map-marker-alt"></i>{{ conAddress|striptags }}</div>
 				{% endif %}
 				{% if node.field_listing_phone.value %}
-					<div class="phone"><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</div>
+					<div class="phone"><a href="https://wa.me/{{ node.field_listing_phone.value }}?text=تماس از izmir.ir"><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</a></div>
 				{% endif %}
 			</div>	
 		</div>
