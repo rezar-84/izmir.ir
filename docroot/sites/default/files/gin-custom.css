@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700&display=swap');
+body{
+    font-family: 'Vazirmatn', sans-serif;
+}
+[dir=rtl]:root {
+    --gin-font: "Vazirmatn", sans-serif;
+    --gin-font-size-xxs: .75rem;
+    --gin-font-size-xs: small;
+    --gin-font-size-s: .875rem;
+    --gin-font-size: 1rem;
+    --gin-font-size-m: var(--gin-font-size);
+    --gin-font-size-l: 1.125rem;
+    --gin-font-size-xl: 1.25rem;
+    --gin-font-size-h3: 1.5rem;
+    --gin-font-size-h2: 1.75rem;
+    --gin-font-size-h1: 1.6rem;
+    --gin-font-size-quote: 1.1em;
+    --gin-font-weight-normal: 500;
+    --gin-font-weight-semibold: 626;
+    --gin-font-weight-bold: 600;
+    --gin-font-weight-heavy: 700;
+  }
+  .dashboards-layout-builder-form #edit-preview-toggle{
+    left:0;
+    right:auto;
+
+  }
+  #drupal-off-canvas{
+    font-family: 'Vazirmatn', sans-serif;
+  }
+  .webform-options-display-side-by-side > div{
+    margin-left: 0.5em;
+  }
+
+  #coffee-results .ui-widget {
+    font-family: 'Vazirmatn', sans-serif !important;
+
+  }
+
+
+  /* token modal */
+  table.treetable tr span.indenter {
+    margin-right: -19px;
+    margin-left: 0px ;
+}
+input#edit-pattern{
+  direction: ltr;
+}
+#tbm-admin{
+  direction: ltr !important;
+}

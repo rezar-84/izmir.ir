@@ -57,9 +57,13 @@
 
 			</div>
 				{% if node.field_listing_phone.value %}
-			<div class="whatsapp"><a href="https://wa.me/{{ node.field_listing_phone.value }}?text={{ 'Hi 👋 Im contacting you by clicking your add on Izmir.ir'|t }} "  >
-				<button type="button" class="btn btn-outline-secondary btn-whatsapp">{{ 'Contact Via Whatsapp'|t }} </button>
+			<div class="whatsapp">
+				<div class="d-grid gap-2">
+					<a href="https://wa.me/{{ node.field_listing_phone.value }}?text={{ 'Hi 👋 Im contacting you by clicking your add on Izmir.ir'|t }} "  >
+					<button class="btn  btn-outline-secondary btn-whatsapp" type="button">{{ 'Contact Via Whatsapp'|t }} </button>
 				</a>
+				  </div>
+			
 			</div>
 				{% endif %}
 		</div>
