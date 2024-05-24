@@ -1,16 +1,19 @@
 <?php
-function ziston_font_size(){
+function ziston_font_size()
+{
     $size = array();
     $size[''] = '-- Default --';
-    for ($i=12; $i <= 50 ; $i = $i+1) { 
+    for ($i = 12; $i <= 50; $i = $i + 1) {
         $size[$i] = $i;
     }
     return $size;
 }
 
-function ziston_fonts(){
-$tmp = array(
+function ziston_fonts()
+{
+    $tmp = array(
         '---',
+        "'Vazirmatn', Helvetica, sans-serif",
         "'Arial', Helvetica, sans-serif",
         "'Arial Black', Gadget, sans-serif",
         "'Bookman Old Style', serif",
@@ -686,29 +689,31 @@ $tmp = array(
     );
     $fonts = array();
     foreach ($tmp as $key => $value) {
-        $fonts[$value] = $value;   
-    }   
+        $fonts[$value] = $value;
+    }
     return $fonts;
 }
 
-function ziston_render_option_font(){
+function ziston_render_option_font()
+{
     $fonts = ziston_fonts();
     $output = '';
     foreach ($fonts as $key => $value) {
-        $output .= '<option value="'.$key.'">' . $value . '</option>';
+        $output .= '<option value="' . $key . '">' . $value . '</option>';
     }
     return $output;
 }
 
-function ziston_typography_font_styles($option, $selectors) {
+function ziston_typography_font_styles($option, $selectors)
+{
     $output = $selectors . ' {';
-    if(isset($option['face']) && $option['face']){
+    if (isset($option['face']) && $option['face']) {
         $output .= 'font-family:' . $option['face'] . '; ';
-    }    
-    if(isset($option['weight']) && $option['weight']){
+    }
+    if (isset($option['weight']) && $option['weight']) {
         $output .= 'font-weight:' . $option['weight'] . '; ';
     }
-    if(isset($option['size']) && $option['size']){
+    if (isset($option['size']) && $option['size']) {
         $output .= 'font-size:' . $option['size'] . '; ';
     }
     $output .= '}';
@@ -716,38 +721,41 @@ function ziston_typography_font_styles($option, $selectors) {
     return $output;
 }
 
-function ziston_typography_enqueue_google_font($font) {
-    if($font && $font != "---"){
-        if(array_search($font, array_keys(ziston_fonts())) > 17){
+function ziston_typography_enqueue_google_font($font)
+{
+    if ($font && $font != "---") {
+        if (array_search($font, array_keys(ziston_fonts())) > 17) {
             $font = str_replace(" ", "+", $font);
             return "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=$font:wght@300,400,600,700,800,900&display=swap\"/>\n";
         }
-    } 
-    return '';   
+    }
+    return '';
 }
 
-function ziston_links_typography_font($json){
+function ziston_links_typography_font($json)
+{
     $links_fonts = '';
     $customize = (array)json_decode((string)$json, true);
-    if(isset($customize['font_family_primary']) && $customize['font_family_primary']){
+    if (isset($customize['font_family_primary']) && $customize['font_family_primary']) {
         $links_fonts .= ziston_typography_enqueue_google_font($customize['font_family_primary']);
     }
-    if(isset($customize['font_family_second']) && $customize['font_family_second']){
+    if (isset($customize['font_family_second']) && $customize['font_family_second']) {
         $links_fonts .= ziston_typography_enqueue_google_font($customize['font_family_second']);
     }
     return $links_fonts;
 }
 
-function ziston_options_patterns(){
+function ziston_options_patterns()
+{
     $output = '';
     $file_path = \Drupal::service('extension.list.theme')->getPath('ziston');
     $list_file = glob($file_path . '/images/patterns/*.{jpg,png,gif}', GLOB_BRACE);
-   
+
     foreach ($list_file as $key => $file) {
-      if(basename($file)){
-        $file_url = $file_path . 'images/patterns/' .  basename($file); 
-        $output .= '<option value = "'.basename($file).'">'.basename($file).'</option>';
-      } 
+        if (basename($file)) {
+            $file_url = $file_path . 'images/patterns/' .  basename($file);
+            $output .= '<option value = "' . basename($file) . '">' . basename($file) . '</option>';
+        }
     }
     return $output;
 }
