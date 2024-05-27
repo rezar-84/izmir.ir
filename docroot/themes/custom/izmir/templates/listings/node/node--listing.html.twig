@@ -136,10 +136,10 @@
 											<span class="content-inner">
 												<span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
 												{% if node.field_listing_address.value %}
-													<span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
+													<span class="address"><a href="https://www.google.com/maps/search/?api=1&query={{ conAddress|striptags }}"><i class="icon la la-map"></i>{{ conAddress|striptags }}</a></span>
 												{% endif %}
 												{% if node.field_listing_phone.value %}
-													<span class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</span>
+													<span class="phone">><a href="tel:"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</a></span>
 												{% endif %}
 											</span>  
 										</span>
@@ -164,11 +164,11 @@
 								{% endif %}
 
 								{% if content.field_listing_phone|render %}
-									<li><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</li>
+									<li><a href="{{ node.field_listing_phone.value }}"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</li>
 								{% endif %}  
 
 								{% if content.field_listing_website|render %}
-									<li><span><i class="icon la la-globe"></i>{{ node.field_listing_website.value }}</span></li>
+									<li><span><a href="{{ node.field_listing_website.value }}" target="_blank" ><i class="icon la la-globe"></i>{{ node.field_listing_website.value }}</a></span></li>
 								{% endif %}  
 
 							</ul>
