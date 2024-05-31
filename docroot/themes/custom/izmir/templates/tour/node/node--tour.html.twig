@@ -17,7 +17,7 @@
 		<div id="listing-home" class="listing-gallery before-help-region">
 			{{ content.field_tour_gallery }}
 		</div>
-		
+
 		<div class="container listing-top-content">
 			<div class="content-inner">
 				<div class="top-left">
@@ -27,7 +27,7 @@
 				</div>
 				<div class="top-right">
 					<div class="listing-action">
-						
+
 						{% if node.field_tour_orginizer.value %}
 							<a href="tel:{{ node.field_listing_phone.value }}"><i class="fas fa-phone-volume"></i>{{ node.field_listing_phone.value }}</a>
 						{% endif %}
@@ -35,8 +35,8 @@
 					</div>
 					<div class="listing-price"><span class="label">{{'Price'|t}}&nbsp;&nbsp;</span>{{ node.field_tour_price_adl.value }}</div>
 				</div>
-			</div>    
-		</div> 
+			</div>
+		</div>
 
 		<div class="listing-nav sticky-listing-nav">
 			<div class="listing-nav-inner">
@@ -44,75 +44,86 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<ul>
-									<li><a href="#listing-home">{{'Home'|t}}</a></li>
-									<li><a href="#listing-description">{{'Description'|t}}</a></li>
-									<li><a href="#listing-amenties">{{'Listing Amenties'|t}}</a></li>
-									<li><a href="#listing-video">{{'Video'|t}}</a></li>
-									<li><a href="#listing-comment">{{'Comment'|t}}</a></li>
-								</ul>
+                <nav id="navbar-example2">
+                  <ul class="nav nav-pills">
+                    <li><a href="#listing-home">{{'Home'|t}}</a></li>
+                    <li><a href="#listing-description">{{'Description'|t}}</a></li>
+                    <li><a href="#listing-amenties">{{'Listing Amenties'|t}}</a></li>
+                    <li><a href="#listing-video">{{'Video'|t}}</a></li>
+                    <li><a href="#listing-comment">{{'Comment'|t}}</a></li>
+                  </ul>
+                </nav>
 							</div>
-						</div>  
+						</div>
 					</div>
-				</div>  
-			</div>  
-		</div>  
+				</div>
+			</div>
+		</div>
 
-	</div>  
+	</div>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				<div class="listing-content-main">
-					<div>{{content.field_tour_image}} </div>
-					{% if content.body|render %}
-						<div class="listing-info-block listing-description" id="listing-description">
-							<div class="block-content">
-								{{ content.body }}
-							</div>
-						</div>  
-					{% endif %}  
+          <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+            {% if content.field_tour_image %}
+            <div id="listing-home">
+              <div>{{content.field_tour_image}} </div>
+            </div>
+            {% endif %}
 
-					{% if content.field_listing_amenities|render %}
-						<div class="listing-info-block listing-amenties" id="listing-amenties">
-							<h3 class="title">{{ 'Listing Amenities'|t }}</h3>
-							<div class="block-content">
-								{{ content.field_listing_amenities }}
-							</div>  
-						</div> 
-					{% endif %}  
+            {% if content.body|render %}
+              <div class="listing-info-block listing-description" id="listing-description">
+                <div class="block-content">
+                  {{ content.body }}
+                </div>
+              </div>
+            {% endif %}
 
-					<div class="listing-info-block listing-video" id="listing-video">
-						<h3 class="title">{{ 'Video'|t }}</h3>
-						<div class="block-content">
-							{{ tour_video|raw }}
-						</div>  
-					</div>
+            {% if content.field_listing_amenities|render %}
+              <div class="listing-info-block listing-amenties" id="listing-amenties">
+                <h3 class="title">{{ 'Listing Amenities'|t }}</h3>
+                <div class="block-content">
+                  {{ content.field_listing_amenities }}
+                </div>
+              </div>
+            {% endif %}
 
-					{% if content.field_tour_tags|render %}
-						<div class="listing-info-block listing-tags" id="listing-video">
-							<h3 class="title">{{ 'Tags'|t }}</h3>
-							<div class="block-content">
-								{{ content.field_tour_tags }}
-							</div>
-						</div>
-					{% endif %}
+            <div class="listing-info-block listing-video" id="listing-video">
+              <h3 class="title">{{ 'Video'|t }}</h3>
+              <div class="block-content">
+                {{ tour_video|raw }}
+              </div>
+            </div>
 
-					{% if content.comment|render %}
-						<div class="listing-info-block listing-comment" id="listing-comment">
-							<div class="block-content">
-								<div id="node-single-comment">
-									{{ content.comment }}
-								</div>
-							</div>
-						</div>
-					{% endif %}  
+            {% if content.field_tour_tags|render %}
+              <div class="listing-info-block listing-tags" id="listing-video">
+                <h3 class="title">{{ 'Tags'|t }}</h3>
+                <div class="block-content">
+                  {{ content.field_tour_tags }}
+                </div>
+              </div>
+            {% endif %}
 
-				</div>  
+            {% if content.comment|render %}
+              <div class="listing-info-block listing-comment" id="listing-comment">
+                <div class="block-content">
+                  <div id="node-single-comment">
+                    {{ content.comment }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+
+
+				</div>
 			</div>
 			<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				<div class="listing-content-main listing-sidebar">
-					
+
 					<div class="lt-block-second lt-map">
 						<div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
 						<div class="listing-main-map" id="listing-main-map"></div>
@@ -135,15 +146,15 @@
 												{% if node.field_listing_phone.value %}
 													<span class="phone">><a href="tel:"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</a></span>
 												{% endif %}
-											</span>  
+											</span>
 										</span>
 									</span>
 								</div>
-							</div>  
+							</div>
 						</div>
 					</div>
 
-			
+
 
 					{% if content.field_listing_time|render %}
 						<div class="lt-block-second business-hours">
@@ -156,11 +167,11 @@
 
 					{{ listing_sidebar }}
 
-				</div>  
+				</div>
 
 			</div>
 		</div>
-	</div>  
+	</div>
 </article>
 <script>
 	map_init('single');

@@ -18,9 +18,9 @@ global-styling:
       assets/css/template.css: {}
   js:
     assets/vendor/jquery-migrate.min.js: {}
+    assets/vendor/jquery.appear.js: { }
     assets/js/bootstrap.min.js: {}
     assets/js/imagesloader.min.js: {}
-    assets/vendor/jquery.appear.js: {}
     assets/vendor/owl-carousel/owl.carousel.js: {}
     assets/vendor/waypoint.js: {}
     assets/vendor/count-to.js: {}
@@ -57,11 +57,11 @@ listing_init.gmap:
     assets/vendor/leaflet/Leaflet.GoogleMutant.js: {}
   dependencies:
     - ziston/ziston.gmap_api
-    
+
 gavias-ziston-admin:
   version: VERSION
-  css: 
-    theme: 
+  css:
+    theme:
       assets/css/theme-settings.css: {}
       assets/vendor/colorpicker/css/colorpicker.css: {}
       assets/vendor/codemirror/lib/codemirror.css: {}

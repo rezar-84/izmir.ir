@@ -40,6 +40,19 @@
   margin-top: 1rem;
   padding-top: 1rem;
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+/** Search region **/
+.search-region {
+  margin-left: 1rem;
+}
+
+.scrollspy-example {
+  position: relative;
+  overflow: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
