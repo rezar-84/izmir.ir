@@ -1,0 +1,58 @@
+/*** Global styles **/
+#listing .item-image {
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+#listing .item-image img {
+  display: block;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+}
+#listing .desc {
+  padding: 1rem;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-top: none;
+  border-radius: 10px 10px;
+  background: #fff;
+  position: relative;
+  margin-top: -105px;
+  min-height: 212px;
+}
+#listing .desc .title {
+  min-height: 50px;
+}
+#listing .desc .title h3 {
+  font-size: 1.1rem;
+}
+#listing .desc .location a {
+  color: #2e7d32;
+}
+#listing .desc .date {
+  direction: ltr;
+  text-align: right;
+}
+#listing .desc .price {
+  text-align: right;
+}
+#listing .desc .link {
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+/** Search region **/
+.search-region {
+  margin-left: 1rem;
+}
+
+.scrollspy-example {
+  position: relative;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=main.css.map */
