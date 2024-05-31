@@ -1,0 +1,52 @@
+$primary-color: #2e7d32;
+
+/*** Global styles **/
+#listing{
+    .item-image{
+        position: relative;
+        border-radius: 10px 10px 0 0;
+        img{
+            display: block;
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+        }
+    }
+    .desc{
+      padding: 1rem;
+      -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-top: none;
+      border-radius: 10px 10px;
+      background: #fff;
+      position: relative;
+      margin-top: -105px;
+      min-height: 212px;
+      .title{
+        min-height: 50px;
+        h3{
+          font-size:1.1rem;
+        }
+      }
+      .location{
+        a{
+          color: $primary-color;
+        }
+      }
+      .date{
+        direction: ltr;
+        text-align: right;
+      }
+      .price{
+        text-align: right;
+      }
+      .link{
+        border-top: 1px solid #ccc;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+      }
+    }
+}

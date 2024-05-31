@@ -4,6 +4,7 @@ izmir.skin.default:
    css:
       theme:
          css/style.css: {}
+         css/main.css: {}
    js:
       js/main.js: {}
 style-rtl:

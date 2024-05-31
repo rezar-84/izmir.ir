@@ -69,3 +69,5 @@ errors.log
 /docroot/**/node_modules
 /.editorconfig
 /.gitattributes
+/.editorconfig
+/.gitattributes
