@@ -55,4 +55,19 @@
   overflow: auto;
 }
 
+.node-listing-single .listing-top .listing-top-content {
+  padding: 60px 0;
+  position: relative;
+  background: #f3f8f6;
+  margin-top: 0 !important;
+}
+.node-listing-single .listing-top .listing-top-content .top-left,
+.node-listing-single .listing-top .listing-top-content .top-right {
+  width: 100%;
+}
+
+.node-listing-single .listing-content-main .listing-info-block.listing-amenties .block-content {
+  margin: 0 !important;
+}
+
 /*# sourceMappingURL=main.css.map */
