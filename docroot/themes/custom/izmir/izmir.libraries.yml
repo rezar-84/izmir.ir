@@ -6,8 +6,8 @@ izmir.skin.default:
          css/style.css: {}
          css/main.css: {}
    js:
-      js/main.js: {}
+     js/main.js: {}
 style-rtl:
    css:
       theme:
-         assets/css/style-rtl.css:  
+         assets/css/style-rtl.css:

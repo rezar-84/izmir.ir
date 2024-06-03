@@ -56,15 +56,13 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <nav id="navbar-example2">
-                  <ul class="nav nav-pills">
-                    <li><a href="#listing-home">{{'Home'|t}}</a></li>
-                    <li><a href="#listing-description">{{'Description'|t}}</a></li>
-                    <li><a href="#listing-amenties">{{'Amenties'|t}}</a></li>
-                    <li><a href="#listing-video">{{'Video'|t}}</a></li>
-                    <li><a href="#listing-comment">{{'Comment'|t}}</a></li>
-                  </ul>
-                </nav>
+                <ul>
+                  <li><a href="#listing-home">{{'خانه'|t}}</a></li>
+                  <li><a href="#listing-description">{{'توضیحات'|t}}</a></li>
+                  <li><a href="#listing-amenties">{{'امکانات'|t}}</a></li>
+                  <li><a href="#listing-video">{{'ویدیو'|t}}</a></li>
+                  <li><a href="#listing-comment">{{'نظرات'|t}}</a></li>
+                </ul>
 							</div>
 						</div>
 					</div>
@@ -78,114 +76,194 @@
 		<div class="row">
 			<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				<div class="listing-content-main">
-          <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-            {% if content.field_tour_image %}
+          <div class="options d-flex align-items-center justify-content-between mb-3">
+            <div class="item d-flex align-items-center me-3">
+              <strong>{{ 'ظرفیت'|t }}</strong>
+              <span class="mx-2">{{ content.field_tour_qty }}</span>
+            </div>
+            <div class="item d-flex align-items-center me-3">
+              <strong>{{ 'شرایط سنی	'|t }}</strong>
+              <span class="mx-2">{{ content.field_tour_age }}</span>
+            </div>
+            <div class="item d-flex align-items-center me-3">
+              <strong>{{ 'درجه سختی	'|t }}</strong>
+              <span class="mx-2">{{ content.field_tour_difficulty }}</span>
+            </div>
+          </div>
+          {% if content.field_tour_image %}
             <div id="listing-home">
               <div>{{content.field_tour_image}} </div>
             </div>
-            {% endif %}
+          {% endif %}
 
-            {% if content.body|render %}
-              <div class="listing-info-block listing-description" id="listing-description">
-                <div class="block-content">
-                  {{ content.body }}
-                </div>
+          {% if content.body|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="block-content">
+                {{ content.body }}
               </div>
-            {% endif %}
+            </div>
+          {% endif %}
 
-            {% if content.field_tour_plan|render %}
-              <div class="listing-info-block" id="listing-tour-plan">
-                <h3 class="title">{{ 'Tour Plan'|t }}</h3>
-                <div class="block-content">
-                  {{ content.field_tour_plan }}
-                </div>
+
+
+          {% if content.field_tour_essentials|render %}
+            <div class="listing-info-block">
+              <h3 class="title">{{ 'نوع اقامتگاه'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_accommodation_type }}
               </div>
-            {% endif %}
+            </div>
+          {% endif %}
 
-            {% if content.field_tour_arr_date['#items'] is not empty %}
-              {% set start_time = content.field_tour_arr_date['#items'][0]['value'] %}
-              {% set end_time = content.field_tour_arr_date['#items'][0]['end_value'] %}
-              <div class="listing-info-block" id="listing-tour-plan">
-                <h3 class="title">{{ 'Trip Date'|t }}</h3>
-                <div class="block-content">
-                  <div class="event-date d-flex align-items-center">
-                    <div class="start-time">
-                       <span class="fas fa-calendar-check ms-2 text-success"></span>{{ start_time|date('F j, Y - H:i') }}
-                    </div>
-                    <span class="fas fa-arrow-left mx-3 text-success"></span>
-                    <div class="end-time">
-                      <span class="fas fa-calendar-check ms-2 text-success"></span>{{ end_time|date('F j, Y - H:i') }}
-                    </div>
+
+          {% if content.field_tour_plan|render %}
+            <div class="listing-info-block" id="listing-tour-plan">
+              <h3 class="title">{{ 'برنامه سفر'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_plan }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_tour_arr_date['#items'] is not empty %}
+            {% set start_time = content.field_tour_arr_date['#items'][0]['value'] %}
+            {% set end_time = content.field_tour_arr_date['#items'][0]['end_value'] %}
+            <div class="listing-info-block" id="listing-tour-plan">
+              <h3 class="title">{{ 'تاریخ برگزاری'|t }}</h3>
+              <div class="block-content">
+                <div class="event-date d-flex align-items-center">
+                  <div class="start-time">
+                    <span class="fas fa-calendar-check ms-2 text-success"></span>{{ start_time|date('F j, Y - H:i') }}
+                  </div>
+                  <span class="fas fa-arrow-left mx-3 text-success"></span>
+                  <div class="end-time">
+                    <span class="fas fa-calendar-check ms-2 text-success"></span>{{ end_time|date('F j, Y - H:i') }}
                   </div>
                 </div>
-              </div>
-
-            {% endif %}
-            {% if content.field_tour_arr_date|render %}
-
-            {% endif %}
-
-            {% if content.field_tour_essentials|render %}
-              <div class="listing-info-block listing-amenties" id="listing-amenties">
-                <h3 class="title">{{ 'Amenities'|t }}</h3>
-                <div class="block-content">
-                  {{ content.field_tour_essentials }}
-                </div>
-              </div>
-            {% endif %}
-
-            {% if content.field_tour_necessities|render %}
-              <div class="listing-info-block listing-amenties" id="listing-necessiries">
-                <h3 class="title">{{ 'Necesseries'|t }}</h3>
-                <div class="block-content">
-                  {{ content.field_tour_necessities }}
-                </div>
-              </div>
-            {% endif %}
-
-            {% if content.field_tour_cancellation_policy|render %}
-              <div class="listing-info-block listing-amenties" id="cancellation_policy">
-                <h3 class="title">{{ 'Cancellation Policy'|t }}</h3>
-                <div class="block-content">
-                  {{ content.field_tour_cancellation_policy }}
-                </div>
-              </div>
-            {% endif %}
-
-            <div class="listing-info-block listing-video" id="listing-video">
-              <h3 class="title">{{ 'Video'|t }}</h3>
-              <div class="block-content">
-                {{ tour_video|raw }}
               </div>
             </div>
 
-            {% if content.field_tour_tags|render %}
-              <div class="listing-info-block listing-tags" id="listing-video">
-                <h3 class="title">{{ 'Tags'|t }}</h3>
-                <div class="block-content">
-                  {{ content.field_tour_tags }}
-                </div>
-              </div>
-            {% endif %}
+          {% endif %}
 
-            {% if content.field_comment %}
-              <div class="listing-info-block listing-comment" id="listing-comment">
-                <div class="block-content">
-                  <div id="node-single-comment">
-                    {{ content.field_comment }}
-                  </div>
-                </div>
-              </div>
-            {% endif %}
 
+          {% if content.field_tour_essentials|render %}
+            <div class="listing-info-block">
+              <h3 class="title">{{ 'پذیرایی همراه با تور'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_serving }}
+              </div>
+            </div>
+          {% endif %}
+
+
+          <div class="listing-info-block listing-amenties" id="listing-amenties">
+            <h3 class="title">{{ 'امکانات'|t }}</h3>
+            <div class="block-content">
+              <div class="d-flex align-items-center">
+                <strong>{{ 'امکان آوردن پت'|t  }}</strong>
+                <span class="badge badge-primary mx-2">{{ content.field_tour_pet }}</span>
+              </div>
+              <div class="d-flex align-items-center">
+
+                <strong>{{ 'امکان همراهی تور با ماشین شخصی'|t  }}</strong>
+                {% if  'بله' in content.field_tour_prv_car.0  %}
+                  <span class="badge badge-primary mx-2">دارد</span>
+                {% else %}
+                  <span class="badge badge-danger mx-2">ندارد</span>
+                {% endif %}
+              </div>
+              <div class="d-flex align-items-center">
+
+                <strong>{{ 'امکان پرداخت ریالی'|t  }}</strong>
+                {% if  'دارد' in content.field_tour_pay_by_irr.0  %}
+                  <span class="badge badge-primary mx-2">دارد</span>
+                {% else %}
+                  <span class="badge badge-danger mx-2">ندارد</span>
+                {% endif %}
+              </div>
+              <div class="d-flex align-items-center">
+
+                <strong>{{ 'بیمه مسافرتی'|t  }}</strong>
+                {% if  'دارد' in content.field_tour_insurance.0  %}
+                  <span class="badge badge-primary mx-2">دارد</span>
+                {% else %}
+                  <span class="badge badge-danger mx-2">ندارد</span>
+                {% endif %}
+              </div>
+              <div class="d-flex align-items-center">
+
+                <strong>{{ 'لیدر دوزبانه'|t  }}</strong>
+                {% if  'دارد' in content.field_tour_bi_ling_guide.0  %}
+                  <span class="badge badge-primary mx-2">دارد</span>
+                {% else %}
+                  <span class="badge badge-danger mx-2">ندارد</span>
+                {% endif %}
+              </div>
+            </div>
           </div>
 
 
-				</div>
+          {% if content.field_tour_essentials|render %}
+            <div class="listing-info-block">
+              <h3 class="title">{{ 'لوازم پیشنهادی'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_essentials }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_tour_necessities|render %}
+            <div class="listing-info-block listing-amenties" id="listing-necessiries">
+              <h3 class="title">{{ 'ضروریات'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_necessities }}
+              </div>
+            </div>
+          {% endif %}
+
+
+          {% if content.field_tour_cancellation_policy|render %}
+            <div class="listing-info-block listing-amenties" id="cancellation_policy">
+              <h3 class="title">{{ 'قوانین کنسلی'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_cancellation_policy }}
+              </div>
+            </div>
+          {% endif %}
+
+
+          <div class="listing-info-block listing-video" id="listing-video">
+            <h3 class="title">{{ 'ویدیو'|t }}</h3>
+            <div class="block-content">
+              {{ tour_video|raw }}
+            </div>
+          </div>
+
+          {% if content.field_tour_tags|render %}
+            <div class="listing-info-block listing-tags" id="listing-video">
+              <h3 class="title">{{ 'برچسب ها'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_tour_tags }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_comment %}
+            <div class="listing-info-block listing-comment" id="listing-comment">
+              <div class="block-content">
+                <div id="node-single-comment">
+                  {{ content.field_comment }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+
+        </div>
 			</div>
 			<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				<div class="listing-content-main listing-sidebar">
-
+          {{ listing_sidebar }}
 					<div class="lt-block-second lt-map">
 						<div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
 						<div class="listing-main-map" id="listing-main-map"></div>
@@ -227,7 +305,7 @@
 						</div>
 					{% endif %}
 
-					{{ listing_sidebar }}
+
 
 				</div>
 
@@ -235,7 +313,7 @@
 		</div>
 	</div>
 </article>
-<script>
-	map_init('single');
-</script>
+{#<script>#}
+{#	map_init('single');#}
+{#</script>#}
 

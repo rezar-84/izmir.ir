@@ -53,7 +53,7 @@
 
 
       {# Check if the current page is a specific node type #}
-      {% if node and node.bundle() == 'tour' %}
+      {% if node and node.bundle() == 'tour' or node.bundle() == 'listing' %}
         <div id="content" class="content content-full">
           {% include '@ziston/page/main.html.twig' %}
         </div>

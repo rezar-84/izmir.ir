@@ -4,7 +4,7 @@
       if($('.listing-main-map').length == 0)
         return;
       var addressPoints = [];
-      
+
       $('.listing-items .listing-block').each(function(){
         var lat = $(this).find('.data-lat').html();
         var lon = $(this).find('.data-lon').html();
@@ -14,15 +14,15 @@
           if($(this).html()){
             icon = $(this).html();
           }
-        }); 
+        });
          $(this).find('.listing-category .data-category-color').each(function(){
           if($(this).html()){
             cat_color = $(this).html();
           }
-        }); 
+        });
 
         var tmp = [lat,lon,html,icon, cat_color];
-        addressPoints.push(tmp); 
+        addressPoints.push(tmp);
 
       })
 
@@ -40,7 +40,7 @@
       }else{
         latlng = L.latLng('42.7247484', '-78.0127572');
       }
-      
+
       var map_zoom = drupalSettings.listing_setting.map_zoom;
 
       var map = L.map('listing-main-map',{
@@ -96,7 +96,7 @@
         }).addTo(map)
         }
 
-        if(map_source == 'google'){   
+        if(map_source == 'google'){
           //--- Code use google map
          var styles = [];
          if(drupalSettings.listing_setting.google_map_style == 'gray'){
@@ -148,9 +148,9 @@
 
       if(mode != 'single'){
         bounds = new L.LatLngBounds(lat_lng_list);
-        var fit_bounds = map.fitBounds(bounds, { 'padding': [80, 80] });  
+        var fit_bounds = map.fitBounds(bounds, { 'padding': [80, 80] });
       }
-        
+
       $('.gva-reset-map').on('click', function(e){
         e.preventDefault();
         map.setView(latlng, drupalSettings.listing_setting.map_zoom);
@@ -240,7 +240,7 @@
    }
 
   jQuery(document).ajaxComplete(function(event, xhr, settings) {
-    if(settings.data){ 
+    if(settings.data){
       if (settings.data.indexOf( "view_name=listing_content") != -1) {
         $('.views-exposed-form .js-form-type-checkbox').each(function(){
           if(!$(this).hasClass('pretty')){
@@ -250,7 +250,7 @@
         });
         $('.listing-block').each(function(){
           $(this).magnificPopup({
-            delegate: 'a.image-popup', 
+            delegate: 'a.image-popup',
             type: 'image',
             gallery: {
               enabled: true
@@ -264,7 +264,7 @@
         });
 
       }
-    }  
+    }
   });
 
 })(jQuery);

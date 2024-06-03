@@ -1,5 +1,6 @@
 $primary-color: #2e7d32;
 $gray-color: #f3f8f6;
+$danger-color: #ee0f3c;
 
 /*** Global styles **/
 #listing{
@@ -79,4 +80,21 @@ $gray-color: #f3f8f6;
 }
 .node-listing-single .listing-content-main .listing-info-block.listing-amenties .block-content{
   margin: 0 !important;
+}
+.webform-submission-form .form-item label,
+.views-exposed-form .form-item label{
+  font-family: inherit;
+}
+
+.badge-primary{
+  background: $primary-color;
+}
+
+.badge-danger{
+  background: $danger-color;
+}
+.node-listing-single .listing-content-main .block{
+  border-radius: 14px;
+  border:unset;
+  padding: 20px;
 }
