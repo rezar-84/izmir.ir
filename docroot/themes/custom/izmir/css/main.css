@@ -70,4 +70,23 @@
   margin: 0 !important;
 }
 
+.webform-submission-form .form-item label,
+.views-exposed-form .form-item label {
+  font-family: inherit;
+}
+
+.badge-primary {
+  background: #2e7d32;
+}
+
+.badge-danger {
+  background: #ee0f3c;
+}
+
+.node-listing-single .listing-content-main .block {
+  border-radius: 14px;
+  border: unset;
+  padding: 20px;
+}
+
 /*# sourceMappingURL=main.css.map */
