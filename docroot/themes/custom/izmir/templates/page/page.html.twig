@@ -9,7 +9,7 @@
 	<div class="body-page gva-body-page">
 	   {% include header_skin %}
 
-	   {% if page.breadcrumbs %}
+	   {% if page.breadcrumbs and node.bundle() != 'tour' %}
 	   	{% set has_breadcrumb = ' has-breadcrumb' %}
 			<div class="breadcrumbs">
 				{{ page.breadcrumbs }}
