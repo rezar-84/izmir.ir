@@ -362,4 +362,8 @@
   text-align: center;
 }
 
+.gsc-heading .sub-title {
+  letter-spacing: 0 !important;
+}
+
 /*# sourceMappingURL=main.css.map */
