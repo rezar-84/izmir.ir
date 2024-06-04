@@ -321,6 +321,33 @@
             </div>
           </div>
 
+          <div class="lt-block-second business-info mt-3">
+            <h3 class="title">اطلاعات تور</h3>
+            <div class="block-content">
+              <div class="item-info">
+                <span>{{ 'ظرفیت تور'|t  }}</span>
+                <i class="fas fa-user-group"></i>
+                {{  content.field_tour_qty }}
+              </div>
+
+              <div class="item-info">
+                <span>{{ 'شرایط سنی'|t }}</span>
+                <i class="fas fa-user-check"></i>
+                {{ content.field_tour_age }}
+              </div>
+
+              <div class="item-info">
+                <span>{{ 'لیدر دوزبانه'|t }}</span>
+                <i class="fas fa-globe"></i>
+                {% if  'دارد' in content.field_tour_bi_ling_guide.0  %}
+                  دارد
+                {% else %}
+                 ندارد
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
           <div class="lt-block-second lt-map">
             <div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
             <div class="listing-main-map" id="listing-main-map"></div>
