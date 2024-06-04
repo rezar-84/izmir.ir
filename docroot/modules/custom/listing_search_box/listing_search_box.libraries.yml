@@ -1,0 +1,4 @@
+listing_search_box:
+  css:
+    theme:
+      css/style.css: {}

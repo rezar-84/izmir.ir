@@ -1,0 +1,14 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function listing_search_box_theme() {
+  return [
+    'listing_search_results' => [
+      'variables' => [
+        'items' => [],
+      ],
+      'template' => 'listing-search-results',
+    ],
+  ];
+}

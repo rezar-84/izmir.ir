@@ -1,0 +1,7 @@
+name: 'Listing Search Box'
+type: module
+description: 'Provides a custom search block with filters.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:block

@@ -1,0 +1,6 @@
+services:
+  listing_search_box.controller.search_results:
+    class: Drupal\listing_search_box\Controller\SearchResultsController
+    arguments: ['@renderer']
+    tags:
+      - { name: controller.service_arguments }

@@ -1,25 +1,26 @@
 {%
-	set classes = [
-		'node',
-		'node-detail',
-		'node--type-' ~ node.bundle|clean_class,
-		node.isPromoted() ? 'node--promoted',
-		node.isSticky() ? 'node--sticky',
-		not node.isPublished() ? 'node--unpublished',
-		view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-		'clearfix',
-	]
+  set classes = [
+  'node',
+  'node-detail',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
 %}
+{% set organizer = content.field_tour_orginizer[0]['#options']['entity'] %}
 {% set conAddress %}{{ node.field_listing_address.value }}{% endset %}
 
 <article{{ attributes.addClass(classes).addClass('node-listing-single') }}>
-	<div class="listing-top">
-		<div id="listing-home" class="listing-gallery before-help-region">
-			{{ content.field_tour_gallery }}
-		</div>
+  <div class="listing-top">
+    <div id="listing-home" class="listing-gallery before-help-region">
+      {{ content.field_tour_gallery }}
+    </div>
 
-		<div class="listing-top-content">
-			<div class="container">
+    <div class="listing-top-content">
+      <div class="container">
         <div class="content-inner">
           <div class="row">
             <div class="col-12 col-md-6">
@@ -30,16 +31,31 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="top-right">
+              <div class="top-right-tour">
                 <div class="listing-action align-items-center">
+                  <div class="listing-action">
+                    {% if node.field_tour_price_adl.value %}
+                      <div class="item-action listing-price">
+                        <span class="fas fa-money-bill text-success"></span>
+                        <span class="label">از</span>{{ node.field_tour_price_adl.value }} لیر
+                      </div>
+                    {% endif %}
+                    {% if content.field_tour_orginizer is not empty %}
+                      {% if organizer.field_organizer_tel.value is not empty %}
+                        <a class="item-action phone" href="tel:{{ organizer.field_organizer_tel.value }}">
+                          <span class="fas fa-phone text-success"></span>
+                          <span class="label">{{ 'تلفن برگزارکننده'|t  }}</span>{{ organizer.field_organizer_tel.value }}</a>
 
-                  {% if node.field_tour_orginizer.value %}
-                    <a href="tel:{{ node.field_listing_phone.value }}"><i class="fas fa-phone-volume"></i>{{ node.field_listing_phone.value }}</a>
-                  {% endif %}
-                  <a class="btn-second" href="#listing-comment"><i class="fas fa-comments"></i>Comments</a>
-                  <div class="price">
-                    <span class="fas fa-money-bill"></span>
-                    {{ node.field_tour_price_adl.value }}
+                      {% endif %}
+                    {% endif %}
+
+                    <div class="item-action category">
+                      <span class="fas fa-user text-success"></span>
+                      <span class="label">برگزارکننده</span>
+                      <span class="listing-category">
+                      <a hreflang="en">{{ content.field_tour_orginizer }}</a>
+                       </span>
+                    </div>
                   </div>
                 </div>
 
@@ -48,14 +64,14 @@
           </div>
         </div>
       </div>
-		</div>
+    </div>
 
-		<div class="listing-nav sticky-listing-nav">
-			<div class="listing-nav-inner">
-				<div class="listing-nav-inner-inner">
-					<div class="container">
-						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="listing-nav sticky-listing-nav">
+      <div class="listing-nav-inner">
+        <div class="listing-nav-inner-inner">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul>
                   <li><a href="#listing-home">{{'خانه'|t}}</a></li>
                   <li><a href="#listing-description">{{'توضیحات'|t}}</a></li>
@@ -63,19 +79,19 @@
                   <li><a href="#listing-video">{{'ویدیو'|t}}</a></li>
                   <li><a href="#listing-comment">{{'نظرات'|t}}</a></li>
                 </ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	</div>
+  </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
-				<div class="listing-content-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+        <div class="listing-content-main">
           <div class="options d-flex align-items-center justify-content-between mb-3">
             <div class="item d-flex align-items-center me-3">
               <strong>{{ 'ظرفیت'|t }}</strong>
@@ -160,51 +176,65 @@
             <h3 class="title">{{ 'امکانات'|t }}</h3>
             <div class="block-content">
               <div class="d-flex align-items-center">
-                <strong>{{ 'امکان آوردن پت'|t  }}</strong>
-                <span class="badge badge-primary mx-2">{{ content.field_tour_pet }}</span>
+
+                {% if content.field_tour_pet[0]['#markup'] == 'allowed'  %}
+                  <span class="fas fa-check text-success mx-2"></span>
+                  <strong>{{ 'امکان آوردن پت '|t  }}</strong>
+                  <strong class="mx-2">{{ 'مجاز'|t  }}</strong>
+
+                {% elseif content.field_tour_pet[0]['#markup'] == 'disallowed' %}
+                  <span class="fas fa-times text-danger mx-2"></span>
+                  <strong>{{ 'امکان آوردن پت '|t  }}</strong>
+                  <strong class="mx-2">{{ 'غیرمجاز'|t  }}</strong>
+                {% else %}
+                  <span class="fas fa-question text-warning mx-2"></span>
+                  <strong>{{ 'امکان آوردن پت '|t  }}</strong>
+                  <strong class="mx-2">{{ 'نیاز به هماهنگی'|t  }}</strong>
+                {% endif %}
+
               </div>
               <div class="d-flex align-items-center">
-
-                <strong>{{ 'امکان همراهی تور با ماشین شخصی'|t  }}</strong>
                 {% if  'بله' in content.field_tour_prv_car.0  %}
-                  <span class="badge badge-primary mx-2">دارد</span>
+                  <span class="fas fa-check text-success mx-2"></span>
                 {% else %}
-                  <span class="badge badge-danger mx-2">ندارد</span>
+                  <span class="fas fa-close text-danger mx-2"></span>
                 {% endif %}
+                <strong>{{ 'امکان همراهی تور با ماشین شخصی'|t  }}</strong>
+
               </div>
               <div class="d-flex align-items-center">
-
-                <strong>{{ 'امکان پرداخت ریالی'|t  }}</strong>
                 {% if  'دارد' in content.field_tour_pay_by_irr.0  %}
-                  <span class="badge badge-primary mx-2">دارد</span>
+                  <span class="fas fa-check text-success mx-2"></span>
                 {% else %}
-                  <span class="badge badge-danger mx-2">ندارد</span>
+                  <span class="fas fa-close text-danger mx-2"></span>
                 {% endif %}
+                <strong>{{ 'امکان پرداخت ریالی'|t  }}</strong>
+
               </div>
               <div class="d-flex align-items-center">
-
-                <strong>{{ 'بیمه مسافرتی'|t  }}</strong>
                 {% if  'دارد' in content.field_tour_insurance.0  %}
-                  <span class="badge badge-primary mx-2">دارد</span>
+                  <span class="fas fa-check text-success mx-2"></span>
                 {% else %}
-                  <span class="badge badge-danger mx-2">ندارد</span>
+                  <span class="fas fa-close text-danger mx-2"></span>
                 {% endif %}
+                <strong>{{ 'بیمه مسافرتی'|t  }}</strong>
+
               </div>
               <div class="d-flex align-items-center">
-
-                <strong>{{ 'لیدر دوزبانه'|t  }}</strong>
                 {% if  'دارد' in content.field_tour_bi_ling_guide.0  %}
-                  <span class="badge badge-primary mx-2">دارد</span>
+                  <span class="fas fa-check text-success mx-2"></span>
                 {% else %}
-                  <span class="badge badge-danger mx-2">ندارد</span>
+                  <span class="fas fa-close text-danger mx-2"></span>
                 {% endif %}
+                <strong>{{ 'لیدر دوزبانه'|t  }}</strong>
+
               </div>
             </div>
           </div>
 
 
           {% if content.field_tour_essentials|render %}
-            <div class="listing-info-block">
+            <div class="listing-info-block tour-essentials">
               <h3 class="title">{{ 'لوازم پیشنهادی'|t }}</h3>
               <div class="block-content">
                 {{ content.field_tour_essentials }}
@@ -213,7 +243,7 @@
           {% endif %}
 
           {% if content.field_tour_necessities|render %}
-            <div class="listing-info-block listing-amenties" id="listing-necessiries">
+            <div class="listing-info-block tour-necesseries" id="listing-necessiries">
               <h3 class="title">{{ 'ضروریات'|t }}</h3>
               <div class="block-content">
                 {{ content.field_tour_necessities }}
@@ -260,20 +290,47 @@
 
 
         </div>
-			</div>
-			<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-				<div class="listing-content-main listing-sidebar">
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="listing-content-main listing-sidebar">
           {{ listing_sidebar }}
-					<div class="lt-block-second lt-map">
-						<div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
-						<div class="listing-main-map" id="listing-main-map"></div>
-						<div class="listing-items hidden">
-							<div class="listing-block">
-								<div class="listing-data hidden">
-									{{ content.field_listing_category }}
-									<span class="data-lat">{{node.field_listing_map.lat}}</span>
-									<span class="data-lon">{{node.field_listing_map.lon}}</span>
-									<span class="data-html">
+
+          <div class="lt-block-second business-info mt-3">
+            <h3 class="title">{{ 'اطلاعات برگزارکننده'|t }}</h3>
+            <div class="block-content">
+              <ul class="business-info">
+                {% if organizer.field_organizer_address.value is not empty %}
+                  <li><span class="address"><i class="icon la la-map"></i>{{ organizer.field_organizer_address.value }}</span></li>
+                {% endif %}
+                {% if organizer.field_organizer_email.value is not empty %}
+                  <li><a href="mailto:{{ organizer.field_organizer_email.value }}">
+                      <i class="icon la la-envelope"></i>{{ organizer.field_organizer_email.value }}
+                    </a>
+                  </li>
+                {% endif %}
+                {% if organizer.field_organizer_tel.value is not empty %}
+                <li>
+                  <a href="tel:{{ organizer.field_organizer_tel.value }}">
+                    <i class="icon la la-phone"></i>{{ organizer.field_organizer_tel.value }}</li>
+                  </a>
+                {% endif %}
+
+{#                <li><span><i class="icon la la-globe"></i>example.com</span></li>#}
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="lt-block-second lt-map">
+            <div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
+            <div class="listing-main-map" id="listing-main-map"></div>
+            <div class="listing-items hidden">
+              <div class="listing-block">
+                <div class="listing-data hidden">
+                  {{ content.field_listing_category }}
+                  <span class="data-lat">{{node.field_listing_map.lat}}</span>
+                  <span class="data-lon">{{node.field_listing_map.lon}}</span>
+                  <span class="data-html">
 										<span class="gva-map-content-popup">
 											<span class="image">
 												<img src="{{ node.field_listing_image.entity.uri.value | image_style('small') }}" />
@@ -281,37 +338,37 @@
 											<span class="content-inner">
 												<span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
 												{% if node.field_listing_address.value %}
-													<span class="address"><a href="https://www.google.com/maps/search/?api=1&query={{ conAddress|striptags }}"><i class="icon la la-map"></i>{{ conAddress|striptags }}</a></span>
-												{% endif %}
-												{% if node.field_listing_phone.value %}
-													<span class="phone">><a href="tel:"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</a></span>
-												{% endif %}
+                          <span class="address"><a href="https://www.google.com/maps/search/?api=1&query={{ conAddress|striptags }}"><i class="icon la la-map"></i>{{ conAddress|striptags }}</a></span>
+                        {% endif %}
+                        {% if node.field_listing_phone.value %}
+                          <span class="phone">><a href="tel:"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</a></span>
+                        {% endif %}
 											</span>
 										</span>
 									</span>
-								</div>
-							</div>
-						</div>
-					</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
-					{% if content.field_listing_time|render %}
-						<div class="lt-block-second business-hours">
-							<h3 class="title">{{ 'Business Hours'|t }}</h3>
-							<div class="block-content">
-								{{ content.field_listing_time }}
-							</div>
-						</div>
-					{% endif %}
+          {% if content.field_listing_time|render %}
+            <div class="lt-block-second business-hours">
+              <h3 class="title">{{ 'Business Hours'|t }}</h3>
+              <div class="block-content">
+                {{ content.field_listing_time }}
+              </div>
+            </div>
+          {% endif %}
 
 
 
-				</div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </article>
 {#<script>#}
 {#	map_init('single');#}
