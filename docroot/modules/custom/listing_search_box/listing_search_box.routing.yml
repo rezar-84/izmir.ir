@@ -1,0 +1,12 @@
+listing_search_box.results:
+  path: '/listings/results/{category}/{region}/{title}'
+  defaults:
+    _controller: '\Drupal\listing_search_box\Controller\SearchResultsController::results'
+    _title: 'Listing Search Results'
+    title: ''
+  requirements:
+    _permission: 'access content'
+    category: '[^/]+'
+    region: '[^/]+'
+    title: '[^/]*'
+
