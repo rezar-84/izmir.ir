@@ -26,7 +26,7 @@
   font-size: 1.1rem;
 }
 #listing .desc .location a {
-  color: #2e7d32;
+  color: #63AB45;
 }
 #listing .desc .date {
   direction: ltr;
@@ -76,7 +76,7 @@
 }
 
 .badge-primary {
-  background: #2e7d32;
+  background: #63AB45;
 }
 
 .badge-danger {
@@ -213,7 +213,7 @@
   font-size: 1.5rem;
   vertical-align: middle;
   display: inline-block;
-  color: #2e7d32;
+  color: #63AB45;
 }
 .tour-essentials .amenity-item a,
 .tour-necesseries .amenity-item a {
@@ -303,6 +303,28 @@
 #node-single-comment h2:before {
   left: unset !important;
   right: 0;
+}
+
+.node-listing-single .listing-content-main .lt-block-second.business-info .item-info {
+  position: relative;
+  padding-right: 50px;
+  color: var(--body-link-color);
+  font-weight: 700;
+  margin-top: 20px;
+}
+.node-listing-single .listing-content-main .lt-block-second.business-info .item-info span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--body-color);
+  width: 100%;
+  display: block;
+}
+.node-listing-single .listing-content-main .lt-block-second.business-info .item-info i.fas {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  font-size: 32px;
+  color: #63AB45;
 }
 
 /*# sourceMappingURL=main.css.map */

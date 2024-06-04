@@ -1,5 +1,5 @@
 @import "./theme_variables";
-$primary-color: #2e7d32;
+$primary-color: #63AB45;
 $gray-color: #f3f8f6;
 
 /*** Global styles **/
@@ -329,4 +329,26 @@ $gray-color: #f3f8f6;
 #node-single-comment h2:before{
   left:unset !important;
   right: 0;
+}
+
+.node-listing-single .listing-content-main .lt-block-second.business-info .item-info {
+  position: relative;
+  padding-right: 50px;
+  color: var(--body-link-color);
+  font-weight: 700;
+  margin-top: 20px;
+  span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--body-color);
+    width: 100%;
+    display: block;
+  }
+  i.fas {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size: 32px;
+    color: $primary-color;
+  }
 }
