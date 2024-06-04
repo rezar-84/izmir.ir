@@ -57,3 +57,26 @@ function izmir_add_regions_to_node($allowed_regions, &$variables) {
 	 $variables[$region] = $build;
   }
 }
+
+
+/**
+* Implements hook_form_alter().
+*
+* @param $form
+* @param \Drupal\Core\Form\FormStateInterface $form_state
+* @param $form_id
+*/
+function izmir_webform_submission_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if ($form_id > 0) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if (!empty($node) && $node instanceof \Drupal\node\NodeInterface) {
+      if ($node->bundle() == 'tour') {
+      $nid = $node->id();
+      // Prepopulate with parent node ID and disable the selection:
+      $form['elements']['submitted_tour']['#default_value'] = $nid;
+      $form['elements']['submitted_tour']['#attributes']['disabled'] = 'disabled';
+      }
+    }
+  }
+}
