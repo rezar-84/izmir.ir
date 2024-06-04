@@ -352,3 +352,33 @@ $gray-color: #f3f8f6;
     color: $primary-color;
   }
 }
+
+.block-views-blockrelated-tours-block-1{
+  .block-title{
+    margin-top: 30px;
+    margin-bottom: 1em;
+    font-size: 22px;
+    position: relative;
+    padding-bottom: 8px;
+    &::before{
+      content: "";
+      position: absolute;
+      width: 45px;
+      height: 2px;
+      background: var(--ziston-theme-color);
+      border-radius: 5px;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+  .owl-item{
+    margin-bottom: 1rem;
+    .desc{
+      direction: rtl;
+      .date{
+        direction: rtl !important;
+      }
+    }
+  }
+}
