@@ -92,20 +92,20 @@
     <div class="row">
       <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
         <div class="listing-content-main">
-          <div class="options d-flex align-items-center justify-content-between mb-3">
-            <div class="item d-flex align-items-center me-3">
-              <strong>{{ 'ظرفیت'|t }}</strong>
-              <span class="mx-2">{{ content.field_tour_qty }}</span>
-            </div>
-            <div class="item d-flex align-items-center me-3">
-              <strong>{{ 'شرایط سنی	'|t }}</strong>
-              <span class="mx-2">{{ content.field_tour_age }}</span>
-            </div>
-            <div class="item d-flex align-items-center me-3">
-              <strong>{{ 'درجه سختی	'|t }}</strong>
-              <span class="mx-2">{{ content.field_tour_difficulty }}</span>
-            </div>
-          </div>
+{#          <div class="options d-flex align-items-center justify-content-between mb-3">#}
+{#            <div class="item d-flex align-items-center me-3">#}
+{#              <strong>{{ 'ظرفیت'|t }}</strong>#}
+{#              <span class="mx-2">{{ content.field_tour_qty }}</span>#}
+{#            </div>#}
+{#            <div class="item d-flex align-items-center me-3">#}
+{#              <strong>{{ 'شرایط سنی	'|t }}</strong>#}
+{#              <span class="mx-2">{{ content.field_tour_age }}</span>#}
+{#            </div>#}
+{#            <div class="item d-flex align-items-center me-3">#}
+{#              <strong>{{ 'درجه سختی	'|t }}</strong>#}
+{#              <span class="mx-2">{{ content.field_tour_difficulty }}</span>#}
+{#            </div>#}
+{#          </div>#}
           {% if content.field_tour_image %}
             <div id="listing-home">
               <div>{{content.field_tour_image}} </div>
