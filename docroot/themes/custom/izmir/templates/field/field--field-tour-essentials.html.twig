@@ -3,6 +3,6 @@
       {% if item.content['#options'].entity.field_essential_icon.value %}
          <i class="icon {{ item.content['#options'].entity.field_essential_icon.value }}"></i>
       {% endif %}
-      {{ item.content }}
+      {{ item.content['#options'].entity.name.value }}
    </div>
 {% endfor %}
