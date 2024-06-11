@@ -1,14 +1,14 @@
 {%
-	set classes = [
-		'node',
-		'node-detail',
-		'node--type-' ~ node.bundle|clean_class,
-		node.isPromoted() ? 'node--promoted',
-		node.isSticky() ? 'node--sticky',
-		not node.isPublished() ? 'node--unpublished',
-		view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-		'clearfix',
-	]
+  set classes = [
+  'node',
+  'node-detail',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
 %}
 
 {% set conBody  %}{{ content.body }}{% endset %}
@@ -16,62 +16,60 @@
 {% set conVideo %}{{ node.field_listing_video.value }}{% endset %}
 
 <div class="listing-block teaser_1">
-	
-	{% if content.field_listing_image|render %}
-		<div class="listing-image text-center">
-			{{ content.field_listing_image }}
-			<span class="show-in-map"><a href="#" title="{{'Show In Map'|t}}"><i class="la la-map-marker"></i></a></span>
-			<div class="listing-preview">
-				{% if content.field_listing_gallery %}
-					<div class="preview-gallery">{{ content.field_listing_gallery }}</div>
-				{% endif %}  
-				{% if content.field_listing_video|render %}
-					<div class="preview-video">
-						<a class="popup-video" href="{{ conVideo|trim }}"><i class="icon la la-video-camera"></i></a>
-					</div>
-				{% endif %}
-			</div>  
-		</div>
-	{% endif %}  
 
-	<div class="listing-content clearfix">  
-		<div class="listing-info">
-			<h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
-			<div class="tagline">{{ node.field_listing_tagline.value }}</div>
-			<div class="listing-meta">
-				{% if node.field_listing_address.value %}
-					<div class="address"><i class="icon fas fa-map-marker-alt"></i>{{ conAddress|striptags }}</div>
-				{% endif %}
-				{% if node.field_listing_phone.value %}
-				<div class="phone"><a href="tel://{{ node.field_listing_phone.value }}"  ><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</a></div>
-	
-				{% endif %}
-			</div>	
-		</div>
-		<div class="content-footer">
-			<div class="content-inner">
-				<div class="left listing-category">{{ content.field_listing_category }}</div>
-				<div class="right listing-location"><i class="icon fas fa-map-marker-alt"></i>{{ content.field_listing_location }}</div>
-				
-			
+  {% if content.field_listing_image|render %}
+    <div class="listing-image text-center">
+      {{ content.field_listing_image }}
+      <span class="show-in-map"><a href="#" title="{{'Show In Map'|t}}"><i class="la la-map-marker"></i></a></span>
+      <div class="listing-preview">
+        {% if content.field_listing_gallery %}
+          <div class="preview-gallery">{{ content.field_listing_gallery }}</div>
+        {% endif %}
+        {% if content.field_listing_video|render %}
+          <div class="preview-video">
+            <a class="popup-video" href="{{ conVideo|trim }}"><i class="icon la la-video-camera"></i></a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
 
-			</div>
-				{% if node.field_listing_phone.value %}
-			<div class="whatsapp">
-				<div class="d-grid gap-2">
-					<a href="https://wa.me/{{ node.field_listing_phone.value }}?text={{ 'Hi 👋 Im contacting you by clicking your add on Izmir.ir'|t }} "  >
-					<button class="btn  btn-outline-secondary btn-whatsapp" type="button">{{ 'Contact Via Whatsapp'|t }} </button>
-				</a>
-				  </div>
-			
-			</div>
-				{% endif %}
-		</div>
-	</div>  
-	<div class="listing-data hidden">
-		<span class="data-lat">{{node.field_listing_map.lat}}</span>
-		<span class="data-lon">{{node.field_listing_map.lon}}</span>
-		<span class="data-html">
+  <div class="listing-content clearfix">
+    <div class="listing-info">
+      <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+      <div class="tagline">{{ node.field_listing_tagline.value }}</div>
+      <div class="listing-meta">
+        {% if node.field_listing_address.value %}
+          <div class="address"><i class="icon fas fa-map-marker-alt"></i>{{ conAddress|striptags }}</div>
+        {% endif %}
+        {% if node.field_listing_phone.value %}
+          <div class="phone"><a href="tel://{{ node.field_listing_phone.value }}"  ><i class="icon fas fa-phone-alt"></i>{{ node.field_listing_phone.value }}</a></div>
+
+        {% endif %}
+      </div>
+    </div>
+    <div class="content-footer d-flex align-items-center justify-content-between">
+      <div class="content-inner d-flex align-items-center">
+        <div class="left listing-category ms-3">{{ content.field_listing_category }}</div>
+        <div class="right listing-location text-success"><i class="icon fas fa-map-marker-alt text-success mx-2"></i>{{ content.field_listing_location }}</div>
+      </div>
+      {% if node.field_listing_phone.value %}
+        <div class="whatsapp">
+          <div class="d-grid gap-2">
+            <a class="btn btn-success p-1 px-2" href="https://wa.me/{{ node.field_listing_phone.value }}?text={{ 'Hi 👋 Im contacting you by clicking your add on Izmir.ir'|t }} "  >
+              <i class="fab fa-whatsapp text-white"></i>
+              واتساپ
+            </a>
+          </div>
+
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="listing-data hidden">
+    <span class="data-lat">{{node.field_listing_map.lat}}</span>
+    <span class="data-lon">{{node.field_listing_map.lon}}</span>
+    <span class="data-html">
 			<span class="gva-map-content-popup">
 				<span class="image">
 					<a href="{{ url }}" rel="bookmark">
@@ -81,13 +79,13 @@
 				<span class="content-inner">
 					<span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
 					{% if node.field_listing_address.value %}
-						<span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
-					{% endif %}
-					{% if node.field_listing_phone.value %}
-						<span class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</span>
-					{% endif %}
-				</span>  
+            <span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
+          {% endif %}
+          {% if node.field_listing_phone.value %}
+            <span class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</span>
+          {% endif %}
+				</span>
 			</span>
 		</span>
-	</div>
-</div> 
+  </div>
+</div>

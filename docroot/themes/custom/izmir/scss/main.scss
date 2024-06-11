@@ -479,3 +479,14 @@ $gray-color: #f3f8f6;
   }
 
 }
+
+.widget.gsc-block-drupal.text-light div{
+  color: inherit !important;
+}
+
+.listing-category a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  font-family: inherit !important;
+}

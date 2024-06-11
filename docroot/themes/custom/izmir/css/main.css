@@ -442,4 +442,15 @@
   margin-left: 5px;
 }
 
+.widget.gsc-block-drupal.text-light div {
+  color: inherit !important;
+}
+
+.listing-category a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  font-family: inherit !important;
+}
+
 /*# sourceMappingURL=main.css.map */
