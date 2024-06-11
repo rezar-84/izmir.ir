@@ -10,37 +10,51 @@
     'clearfix',
   ]
 %}
+{% set now = "now"|date('U') %}
+
 {% set conBody  %}
   {{ content.body }}
 {% endset %}
 
 <!-- Start Display article for teaser page -->
-{% if view_mode == 'teaser' %} 
+{% if view_mode == 'teaser' %}
   <article{{ attributes.addClass(classes) }}>
-    <div class="event-block">
-      <div class="event-image text-center">
-        {{ content.field_event_image }}
-        <div class="date"> 
-          <span class="day">{{ node.field_event_start.value|date('j') }}</span><span class="month">{{ node.field_event_start.value|date('F') }}</span>
+    <div class="event-block {% if node.field_event_date.value|date('U') < now %}event-expired{% endif %}">
+      <div class="event-content">
+        <div class="event-image text-center">
+          {{ content.field_event_image }}
+        </div>
+        <div class="event-info">
+          <div class="date">
+            <span class="day">{{ node.field_event_date.value|date('d') }}</span><span class="month mx-2">{{ node.field_event_date.value|date('F') }}</span>
+          </div>
+          <div class="event-meta">
+
+            <span class="event-start-time">
+              <i class="far fa-clock"></i>
+              {{ 'از'|t }}
+              {{ node.field_event_date.value|date('H:i') }}
+              {% if node.field_event_date.end_value %}
+                &nbsp
+                {{ 'الی'|t }}
+                &nbsp
+                {{ node.field_event_date.end_value|date('H:i') }}&nbsp
+              {% endif %}
+            </span>&nbsp
+
+          </div>
+          <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+          <div class="event-address"><i class="fas fa-map-marker-alt"></i>{{ content.field_event_address.0 }}</div>
         </div>
       </div>
-      <div class="event-content">  
-        <div class="event-info">
-          <div class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
-          <div class="event-meta">
-            <span class="event-time"> {{ node.field_event_time.value }} </span>&nbsp;-&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span> 
-          </div>
-          <div class="body">{{ conBody|striptags }}</div>
-        </div>
-      </div>  
-    </div>   
-  </article>  
+    </div>
+  </article>
 
 {% elseif view_mode == 'teaser_2' %}
 
   <div class="event-block-2">
     <div class="event-image text-center">
-      {{ content.field_event_image }} 
+      {{ content.field_event_image }}
       <div class="event-date">
         <span class="date">{{ event_date.day }}</span>
         <span class="month">{{ event_date.month }}</span>
@@ -49,15 +63,15 @@
     <div class="content-inner clearfix">
       <div class="event-content-inner">
         <div class="event-content">
-          <h3{{ title_attributes.addClass('post-title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>    
+          <h3{{ title_attributes.addClass('post-title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
           <div class="event-meta">
-            <span class="event-time"> {{ node.field_event_time.value }} </span>&nbsp;&nbsp;-&nbsp;&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span> 
+            <span class="event-time"> {{ node.field_event_time.value }} </span>&nbsp;&nbsp;-&nbsp;&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span>
           </div>
-          <div class="event-line"></div>  
+          <div class="event-line"></div>
           <div class="event-description">{{ conBody|striptags }}</div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 
 {% else %}
@@ -74,8 +88,8 @@
     <div class="post-content">
       {{ title_prefix }}
          <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
-      {{ title_suffix }}        
-      
+      {{ title_suffix }}
+
       <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
         {{ content|without('field_event_image', 'field_event_start', 'field_event_address', 'field_event_time','field_event_map', 'comment') }}
       </div>
@@ -102,7 +116,7 @@
                    self.addMarker(marker).click(function(){
                       if(content){
                          self.openInfoWindow({'content': content}, self.instance.markers[0]);
-                      }                     
+                      }
                    });
                 },
                 panControl: true
@@ -110,12 +124,12 @@
             });
           </script>
       </div>
-      
+
       {% if content.comment %}
         <div id="node-single-comment">
           {{ content.comment }}
         </div>
-      {% endif %} 
+      {% endif %}
 
     </div>
 
