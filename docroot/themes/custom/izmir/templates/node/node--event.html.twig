@@ -80,8 +80,22 @@
   <div class="post-block event-full">
     <div class="post-thumbnail">
       {{ content.field_event_image }}
-      <div class="event-info clearfix">
-        <div class="date clearfix"><i class="fa fa-calendar"></i>{{ content.field_event_start }} <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o"></i></span> {{ content.field_event_time }}</div>
+      <div class="event-info clearfix mb-3">
+        <div class="date clearfix">
+          <i class="fa fa-calendar"></i>
+          <span class="day">{{ node.field_event_date.value|date('d') }}</span><span class="month mx-2">{{ node.field_event_date.value|date('F Y') }}</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o"></i></span>
+          <div class="time">
+            {{ 'از'|t }}
+            {{ node.field_event_date.value|date('H:i') }}
+            {% if node.field_event_date.end_value %}
+              &nbsp
+              {{ 'الی'|t }}
+              &nbsp
+              {{ node.field_event_date.end_value|date('H:i') }}&nbsp
+            {% endif %}
+          </div>
+        </div>
         <div class="address clearfix"><i class="fa fa-map-marker"></i>{{ content.field_event_address }}</div>
       </div>
     </div>

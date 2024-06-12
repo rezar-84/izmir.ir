@@ -57,7 +57,8 @@
     "drupal/smart_date": "^4.1@RC",
     "drupal/bat": "^10.1",
     "drupal/colorbox": "^2.0",
-    "drupal/owlcarousel": "^3.0"
+    "drupal/owlcarousel": "^3.0",
+    "drupal/calendar_systems": "^4.0"
   },
   "require-dev": {
     "drupal/core-dev": "~10",
