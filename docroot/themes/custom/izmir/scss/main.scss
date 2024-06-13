@@ -500,6 +500,8 @@ $gray-color: #f3f8f6;
   .item-image{
     img{
       text-align: center;
+      display: block;
+      margin: 0 auto;
     }
   }
 }
@@ -507,7 +509,13 @@ $gray-color: #f3f8f6;
 .gsc-icon-box-carousel.style-1 .icon-box-item-content .icon-box-item-inner .title{
   font-size: 14px;
 }
-
+.post-block{
+  &.event-expired{
+    img{
+      filter: grayscale(1);
+    }
+  }
+}
 .event-block {
   &.event-expired{
     img{
@@ -688,4 +696,66 @@ $gray-color: #f3f8f6;
       padding-left: unset!important;
     }
   }
+}
+
+
+.lt-page-map_filter-sidebar .view-content-wrapper,
+.lt-page_filter-sidebar .view-content-wrapper{
+  display: inline-block !important;
+}
+
+.gva-listings-full-page .view-content-wrapper .view-content-1{
+  float: right;
+}
+.navigation .gva_menu > li > .sub-menu:after{
+  display: none;
+}
+.event_status{
+  position: absolute;
+  left: 15px;
+  z-index: 19;
+  top: 20px;
+}
+.event-type{
+  position: absolute;
+  right: 15px;
+  z-index: 19;
+  top: 20px;
+}
+.badge-info{
+  background: #0a6eb4;
+}
+.badge-danger{
+  background: #ff0000;
+}
+.badge-success{
+  background: $primary-color;
+}
+.badge-warning{
+  background: #FFCC00;
+}
+
+.badge-primary{
+  background: #222;
+}
+
+.ui-dialog-titlebar,
+.ui-dialog-content{
+  padding: 1rem !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close{
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900;
+  color: #fff;
+ &::before{
+   content: "\f00d";
+   -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+   display: var(--fa-display, inline-block);
+   font-style: normal;
+   font-variant: normal;
+   line-height: 1;
+   text-rendering: auto;
+ }
 }
