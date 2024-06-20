@@ -28,18 +28,46 @@
                 <div class="lt-single-cat">{{ content.field_tour_category }}</div>
                 <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
                 <div class="tagline">{{ node.field_listing_tagline.value }}</div>
+                {% if node.field_number_of_tour_runs.value %}
+                <div class="count badge badge-info">
+                  <i class="fas fa-info-circle inline-middle"></i>
+                  تاکنون این تور
+                  {{ node.field_number_of_tour_runs.value }}
+                  مرتبه برگزار شده است
+                </div>
+                {% endif %}
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="top-right-tour">
                 <div class="listing-action align-items-center">
                   <div class="listing-action">
-                    {% if node.field_tour_price_adl.value %}
-                      <div class="item-action listing-price">
-                        <span class="fas fa-money-bill text-success"></span>
-                        <span class="label">از</span>{{ node.field_tour_price_adl.value }} لیر
-                      </div>
-                    {% endif %}
+
+                    <div class="item-action listing-price">
+                      <span class="fas fa-money-bill text-success"></span>
+                      <span class="label">از</span>
+                      {% if content.field_price_collection.0 %}
+                        {% set price_tour = content.field_price_collection[0]['#paragraph'].field_price.value  %}
+                        {% set currrency_tour = content.field_price_collection[0]['#paragraph'].field_currency.value  %}
+
+                        {{ price_tour }}
+
+                        {% if currrency_tour == 'lira' %}
+                          {{ 'لیر'|t }}
+                        {% elseif currrency_tour == 'dollar' %}
+                          {{ 'دلار'|t }}
+                        {% elseif currrency_tour == 'euro' %}
+                          {{ 'یورو'|t }}
+                        {% elseif currrency_tour == 'rial' %}
+                          {{ 'ریال'|t }}
+                        {% elseif currrency_tour == 'toman' %}
+                          {{ 'تومان'|t }}
+                        {% endif %}
+                      {% else %}
+                        {{ node.field_tour_price_adl.value }} لیر
+                      {% endif %}
+                    </div>
+
                     {% if content.field_tour_orginizer is not empty %}
                       {% if organizer.field_organizer_tel.value is not empty %}
                         <a class="item-action phone" href="tel:{{ organizer.field_organizer_tel.value }}">
@@ -53,7 +81,7 @@
                       <span class="fas fa-user text-success"></span>
                       <span class="label">برگزارکننده</span>
                       <span class="listing-category">
-                      <a hreflang="en">{{ content.field_tour_orginizer }}</a>
+                      <a hreflang="en">{{ content.field_tour_orginizer ? content.field_tour_orginizer : '--' }}</a>
                        </span>
                     </div>
                   </div>
@@ -75,6 +103,7 @@
                 <ul>
                   <li><a href="#listing-home">{{'خانه'|t}}</a></li>
                   <li><a href="#listing-description">{{'توضیحات'|t}}</a></li>
+                  <li><a href="#listing-price">{{'قیمت'|t}}</a></li>
                   <li><a href="#listing-amenties">{{'امکانات'|t}}</a></li>
                   <li><a href="#listing-video">{{'ویدیو'|t}}</a></li>
                   <li><a href="#listing-comment">{{'نظرات'|t}}</a></li>
@@ -92,20 +121,20 @@
     <div class="row">
       <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
         <div class="listing-content-main">
-{#          <div class="options d-flex align-items-center justify-content-between mb-3">#}
-{#            <div class="item d-flex align-items-center me-3">#}
-{#              <strong>{{ 'ظرفیت'|t }}</strong>#}
-{#              <span class="mx-2">{{ content.field_tour_qty }}</span>#}
-{#            </div>#}
-{#            <div class="item d-flex align-items-center me-3">#}
-{#              <strong>{{ 'شرایط سنی	'|t }}</strong>#}
-{#              <span class="mx-2">{{ content.field_tour_age }}</span>#}
-{#            </div>#}
-{#            <div class="item d-flex align-items-center me-3">#}
-{#              <strong>{{ 'درجه سختی	'|t }}</strong>#}
-{#              <span class="mx-2">{{ content.field_tour_difficulty }}</span>#}
-{#            </div>#}
-{#          </div>#}
+          {#          <div class="options d-flex align-items-center justify-content-between mb-3">#}
+          {#            <div class="item d-flex align-items-center me-3">#}
+          {#              <strong>{{ 'ظرفیت'|t }}</strong>#}
+          {#              <span class="mx-2">{{ content.field_tour_qty }}</span>#}
+          {#            </div>#}
+          {#            <div class="item d-flex align-items-center me-3">#}
+          {#              <strong>{{ 'شرایط سنی	'|t }}</strong>#}
+          {#              <span class="mx-2">{{ content.field_tour_age }}</span>#}
+          {#            </div>#}
+          {#            <div class="item d-flex align-items-center me-3">#}
+          {#              <strong>{{ 'درجه سختی	'|t }}</strong>#}
+          {#              <span class="mx-2">{{ content.field_tour_difficulty }}</span>#}
+          {#            </div>#}
+          {#          </div>#}
           {% if content.field_tour_image %}
             <div id="listing-home">
               <div>{{content.field_tour_image}} </div>
@@ -120,9 +149,58 @@
             </div>
           {% endif %}
 
+          <div class="listing-info-block" id="listing-price">
+            <h3 class="title">{{ 'قیمت‌ این تور'|t }}</h3>
+            <div class="block-content">
+              {% if content.field_price_collection.0 %}
+              <table class="table table-striped table-borderless">
+                <thead class="table-dark">
+                <tr>
+                  {% for item in content.field_price_collection %}
+                    {% set price = item['#paragraph'].field_price.value %}
+                    {% set currency = item['#paragraph'].field_currency.value %}
+                    {% if price and currency %}
+                      <th>
+                        {#                        {{ price }} #}
+                        {% if currency == 'lira' %}
+                          {{ 'لیر'|t }}
+                        {% elseif currency == 'dollar' %}
+                          {{ 'دلار'|t }}
+                        {% elseif currency == 'euro' %}
+                          {{ 'یورو'|t }}
+                        {% elseif currency == 'rial' %}
+                          {{ 'ریال'|t }}
+                        {% elseif currency == 'toman' %}
+                          {{ 'تومان'|t }}
+                        {% endif %}
+                      </th>
+                    {% endif %}
 
+                  {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  {% for item in content.field_price_collection %}
+                    {% set price = item['#paragraph'].field_price.value %}
+                    {% set currency = item['#paragraph'].field_currency.value %}
+                    {% if price and currency %}
+                      <td class="price-item">
+                        {{ price }}
+                      </td>
+                    {% endif %}
 
-          {% if content.field_tour_essentials|render %}
+                  {% endfor %}
+                </tr>
+                </tbody>
+              </table>
+              {% else %}
+                {{ node.field_tour_price_adl.value }} لیر به ازای هر بزرگسال
+              {% endif %}
+            </div>
+          </div>
+
+          {% if content.field_tour_accommodation_type|render %}
             <div class="listing-info-block">
               <h3 class="title">{{ 'نوع اقامتگاه'|t }}</h3>
               <div class="block-content">
@@ -162,7 +240,7 @@
           {% endif %}
 
 
-          {% if content.field_tour_essentials|render %}
+          {% if content.field_tour_serving|render %}
             <div class="listing-info-block">
               <h3 class="title">{{ 'پذیرایی همراه با تور'|t }}</h3>
               <div class="block-content">
@@ -262,12 +340,14 @@
           {% endif %}
 
 
+          {% if tour_video  %}
           <div class="listing-info-block listing-video" id="listing-video">
             <h3 class="title">{{ 'ویدیو'|t }}</h3>
             <div class="block-content">
               {{ tour_video|raw }}
             </div>
           </div>
+          {% endif %}
 
           {% if content.field_tour_tags|render %}
             <div class="listing-info-block listing-tags" id="listing-video">
@@ -309,13 +389,13 @@
                   </li>
                 {% endif %}
                 {% if organizer.field_organizer_tel.value is not empty %}
-                <li>
-                  <a href="tel:{{ organizer.field_organizer_tel.value }}">
-                    <i class="icon la la-phone"></i>{{ organizer.field_organizer_tel.value }}</li>
+                  <li>
+                    <a href="tel:{{ organizer.field_organizer_tel.value }}">
+                      <i class="icon la la-phone"></i>{{ organizer.field_organizer_tel.value }}</li>
                   </a>
                 {% endif %}
 
-{#                <li><span><i class="icon la la-globe"></i>example.com</span></li>#}
+                {#                <li><span><i class="icon la la-globe"></i>example.com</span></li>#}
 
               </ul>
             </div>
@@ -327,13 +407,19 @@
               <div class="item-info">
                 <span>{{ 'ظرفیت تور'|t  }}</span>
                 <i class="fas fa-user-group"></i>
-                {{  content.field_tour_qty }}
+                {{  content.field_tour_qty.0 ? content.field_tour_qty.0 : '--' }}
               </div>
 
               <div class="item-info">
                 <span>{{ 'شرایط سنی'|t }}</span>
                 <i class="fas fa-user-check"></i>
-                {{ content.field_tour_age }}
+                {{ content.field_tour_age.0 ? content.field_tour_age.0 : '--' }}
+              </div>
+
+              <div class="item-info">
+                <span>{{ 'تعداد اجرای تور'|t }}</span>
+                <i class="fas fa-check"></i>
+                {{ content.field_number_of_tour_runs.0 ? content.field_number_of_tour_runs.0 : '--'}}
               </div>
 
               <div class="item-info">
@@ -342,7 +428,7 @@
                 {% if  'دارد' in content.field_tour_bi_ling_guide.0  %}
                   دارد
                 {% else %}
-                 ندارد
+                  ندارد
                 {% endif %}
               </div>
             </div>
